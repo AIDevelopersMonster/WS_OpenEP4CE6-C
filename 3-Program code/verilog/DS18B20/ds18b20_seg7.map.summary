@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Tue Sep 04 10:56:25 2012
+Quartus II Version : 11.0 Build 157 04/27/2011 SJ Full Version
+Revision Name : ds18b20_seg7
+Top-level Entity Name : ds18b20_seg7
+Family : Cyclone IV E
+Total logic elements : 249
+    Total combinational functions : 248
+    Dedicated logic registers : 93
+Total registers : 93
+Total pins : 15
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

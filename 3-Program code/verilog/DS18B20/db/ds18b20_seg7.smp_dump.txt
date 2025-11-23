@@ -1,0 +1,20 @@
+
+State Machine - |ds18b20_seg7|ds18b20_drive:ds18b20_u0|state
+Name state.WRITE1 state.WRITE00 state.WRITE0 state.S7 state.READ0 state.WRITE01 state.READ1 state.READ2 state.S4 state.S3 state.S5 state.S6 state.S1 state.S2 state.S0 state.S00 state.READ3 
+state.S00 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.S0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 
+state.S2 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 
+state.S1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 
+state.S6 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 
+state.S5 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 
+state.S3 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 
+state.S4 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 0 
+state.READ2 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 
+state.READ1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 
+state.WRITE01 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 
+state.READ0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 0 
+state.S7 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.WRITE0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.WRITE00 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.WRITE1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 
+state.READ3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 

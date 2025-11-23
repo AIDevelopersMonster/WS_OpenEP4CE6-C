@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sat Sep 08 15:27:25 2012
+Quartus II Version : 11.0 Build 157 04/27/2011 SJ Full Version
+Revision Name : LED_4
+Top-level Entity Name : LED_4
+Family : Cyclone IV E
+Device : EP4CE6E22C8
+Timing Models : Final
+Total logic elements : 60 / 6,272 ( 1 % )
+    Total combinational functions : 59 / 6,272 ( 1 % )
+    Dedicated logic registers : 39 / 6,272 ( 1 % )
+Total registers : 39
+Total pins : 6 / 92 ( 7 % )
+Total virtual pins : 0
+Total memory bits : 0 / 276,480 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 30 ( 0 % )
+Total PLLs : 0 / 2 ( 0 % )

@@ -1,0 +1,7 @@
+
+
+D:/vga_red/altpll.v
+
+Jun 13 05PM:40:25>: Variation file name (altpll) is identical with the name of one of its sub-components.
+
+MegaWizard Plug-In Manager will rename the variation to "altpla" to prevent compilation errors

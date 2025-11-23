@@ -1,0 +1,14 @@
+module joystick(
+					clk,
+					reset,
+					key_up,
+					key_down,
+					key_left,
+					key_right,
+					led
+               );
+input clk,reset;
+input key_up,key_down,key_left,key_right;
+output[3:0] led;
+
+a

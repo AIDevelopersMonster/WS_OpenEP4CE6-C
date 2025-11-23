@@ -1,0 +1,1235 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--writeData_reg[3] is writeData_reg[3] at LC39
+writeData_reg[3]_or_out = data_in[3];
+writeData_reg[3]_reg_input = writeData_reg[3]_or_out;
+writeData_reg[3] = DFFE(writeData_reg[3]_reg_input, GLOBAL(clk), GLOBAL(rst), , !A1L19Q);
+
+
+--writeData_reg[1] is writeData_reg[1] at LC20
+writeData_reg[1]_or_out = data_in[1];
+writeData_reg[1]_reg_input = writeData_reg[1]_or_out;
+writeData_reg[1] = DFFE(writeData_reg[1]_reg_input, GLOBAL(clk), GLOBAL(rst), , !A1L19Q);
+
+
+--writeData_reg[2] is writeData_reg[2] at LC32
+writeData_reg[2]_or_out = !data_in[2];
+writeData_reg[2]_reg_input = writeData_reg[2]_or_out;
+writeData_reg[2] = DFFE(writeData_reg[2]_reg_input, GLOBAL(clk), GLOBAL(rst), , !A1L19Q);
+
+
+--writeData_reg[0] is writeData_reg[0] at LC21
+writeData_reg[0]_or_out = !data_in[0];
+writeData_reg[0]_reg_input = writeData_reg[0]_or_out;
+writeData_reg[0] = DFFE(writeData_reg[0]_reg_input, GLOBAL(clk), GLOBAL(rst), , !A1L19Q);
+
+
+--C1_dffs[0] is lpm_counter:cnt_scan_rtl_0|dffs[0] at LC79
+C1_dffs[0]_reg_input = VCC;
+C1_dffs[0] = TFFE(C1_dffs[0]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--C1_dffs[1] is lpm_counter:cnt_scan_rtl_0|dffs[1] at LC119
+C1_dffs[1]_or_out = C1_dffs[0];
+C1_dffs[1]_reg_input = C1_dffs[1]_or_out;
+C1_dffs[1] = TFFE(C1_dffs[1]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[19] is cnt_delay[19] at LC12
+cnt_delay[19]_p1_out = cnt_delay[18] & cnt_delay[17] & cnt_delay[16] & cnt_delay[15] & cnt_delay[14] & cnt_delay[13] & cnt_delay[12] & cnt_delay[10] & cnt_delay[11] & cnt_delay[8] & cnt_delay[9] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0] & A1L59;
+cnt_delay[19]_p2_out = cnt_delay[18] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & cnt_delay[13] & cnt_delay[12] & cnt_delay[10] & !cnt_delay[11] & cnt_delay[8] & !cnt_delay[9] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[19];
+cnt_delay[19]_or_out = cnt_delay[19]_p1_out # cnt_delay[19]_p2_out;
+cnt_delay[19]_reg_input = cnt_delay[19]_or_out;
+cnt_delay[19] = TFFE(cnt_delay[19]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--clk_div[1] is clk_div[1] at LC124
+clk_div[1]_or_out = clk_div[1];
+clk_div[1]_reg_input = C1_dffs[0] $ clk_div[1]_or_out;
+clk_div[1] = DFFE(clk_div[1]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--C1_dffs[2] is lpm_counter:cnt_scan_rtl_0|dffs[2] at LC120
+C1_dffs[2]_p1_out = C1_dffs[1] & C1_dffs[0];
+C1_dffs[2]_or_out = C1_dffs[2]_p1_out;
+C1_dffs[2]_reg_input = C1_dffs[2]_or_out;
+C1_dffs[2] = TFFE(C1_dffs[2]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--start_delaycnt is start_delaycnt at LC7
+start_delaycnt_p1_out = !rd_input & !cnt_delay[18] & !cnt_delay[10] & !cnt_delay[8] & !cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & !cnt_delay[11] & !cnt_delay[9] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & !cnt_delay[13] & !cnt_delay[12] & !start_delaycnt;
+start_delaycnt_p2_out = !cnt_delay[18] & !cnt_delay[10] & !cnt_delay[8] & !cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & !cnt_delay[11] & !cnt_delay[9] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & !cnt_delay[13] & !cnt_delay[12] & !start_delaycnt & !wr_input;
+start_delaycnt_p4_out = cnt_delay[18] & cnt_delay[10] & cnt_delay[8] & cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & !cnt_delay[11] & !cnt_delay[9] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[13] & cnt_delay[12] & start_delaycnt;
+start_delaycnt_or_out = start_delaycnt_p1_out # start_delaycnt_p2_out # start_delaycnt_p4_out;
+start_delaycnt_reg_input = start_delaycnt_or_out;
+start_delaycnt = TFFE(start_delaycnt_reg_input, GLOBAL(clk), GLOBAL(rst), , !A1L19Q);
+
+
+--cnt_delay[0] is cnt_delay[0] at LC8
+cnt_delay[0]_p1_out = cnt_delay[18] & cnt_delay[10] & cnt_delay[8] & cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & !cnt_delay[11] & !cnt_delay[9] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & cnt_delay[13] & cnt_delay[12] & !cnt_delay[0];
+cnt_delay[0]_or_out = cnt_delay[0]_p1_out;
+cnt_delay[0]_reg_input = !cnt_delay[0]_or_out;
+cnt_delay[0] = TFFE(cnt_delay[0]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--C1_dffs[3] is lpm_counter:cnt_scan_rtl_0|dffs[3] at LC121
+C1_dffs[3]_p1_out = C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[3]_or_out = C1_dffs[3]_p1_out;
+C1_dffs[3]_reg_input = C1_dffs[3]_or_out;
+C1_dffs[3] = TFFE(C1_dffs[3]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--clk_div[2] is clk_div[2] at LC59
+clk_div[2]_p1_out = clk_div[5] & !clk_div[3] & !clk_div[7] & clk_div[6] & !clk_div[4] & C1_dffs[0] & clk_div[1];
+clk_div[2]_p2_out = !C1_dffs[0] & !clk_div[2];
+clk_div[2]_p3_out = !clk_div[1] & !clk_div[2];
+clk_div[2]_p4_out = C1_dffs[0] & clk_div[1] & clk_div[2];
+clk_div[2]_or_out = clk_div[2]_p1_out # clk_div[2]_p2_out # clk_div[2]_p3_out # clk_div[2]_p4_out;
+clk_div[2]_reg_input = !(clk_div[2]_or_out);
+clk_div[2] = DFFE(clk_div[2]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[1] is cnt_delay[1] at LC69
+cnt_delay[1]_or_out = cnt_delay[0];
+cnt_delay[1]_reg_input = cnt_delay[1] $ cnt_delay[1]_or_out;
+cnt_delay[1] = DFFE(cnt_delay[1]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--C1_dffs[4] is lpm_counter:cnt_scan_rtl_0|dffs[4] at LC125
+C1_dffs[4]_p1_out = C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[4]_or_out = C1_dffs[4]_p1_out;
+C1_dffs[4]_reg_input = C1_dffs[4]_or_out;
+C1_dffs[4] = TFFE(C1_dffs[4]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--C1_dffs[5] is lpm_counter:cnt_scan_rtl_0|dffs[5] at LC127
+C1_dffs[5]_p1_out = C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[5]_or_out = C1_dffs[5]_p1_out;
+C1_dffs[5]_reg_input = C1_dffs[5]_or_out;
+C1_dffs[5] = TFFE(C1_dffs[5]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--clk_div[3] is clk_div[3] at LC113
+clk_div[3]_p1_out = clk_div[2] & C1_dffs[0] & clk_div[1];
+clk_div[3]_or_out = clk_div[3];
+clk_div[3]_reg_input = clk_div[3]_p1_out $ clk_div[3]_or_out;
+clk_div[3] = DFFE(clk_div[3]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[2] is cnt_delay[2] at LC65
+cnt_delay[2]_p1_out = cnt_delay[1] & cnt_delay[0];
+cnt_delay[2]_or_out = cnt_delay[2];
+cnt_delay[2]_reg_input = cnt_delay[2]_p1_out $ cnt_delay[2]_or_out;
+cnt_delay[2] = DFFE(cnt_delay[2]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--C1_dffs[6] is lpm_counter:cnt_scan_rtl_0|dffs[6] at LC123
+C1_dffs[6]_p1_out = C1_dffs[5] & C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[6]_or_out = C1_dffs[6]_p1_out;
+C1_dffs[6]_reg_input = C1_dffs[6]_or_out;
+C1_dffs[6] = TFFE(C1_dffs[6]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--C1_dffs[7] is lpm_counter:cnt_scan_rtl_0|dffs[7] at LC122
+C1_dffs[7]_p1_out = C1_dffs[6] & C1_dffs[5] & C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[7]_or_out = C1_dffs[7]_p1_out;
+C1_dffs[7]_reg_input = C1_dffs[7]_or_out;
+C1_dffs[7] = TFFE(C1_dffs[7]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--clk_div[4] is clk_div[4] at LC115
+clk_div[4]_p1_out = clk_div[3] & clk_div[2] & C1_dffs[0] & clk_div[1];
+clk_div[4]_or_out = clk_div[4];
+clk_div[4]_reg_input = clk_div[4]_p1_out $ clk_div[4]_or_out;
+clk_div[4] = DFFE(clk_div[4]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[3] is cnt_delay[3] at LC74
+cnt_delay[3]_p1_out = cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[3]_or_out = cnt_delay[3];
+cnt_delay[3]_reg_input = cnt_delay[3]_p1_out $ cnt_delay[3]_or_out;
+cnt_delay[3] = DFFE(cnt_delay[3]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--C1_dffs[8] is lpm_counter:cnt_scan_rtl_0|dffs[8] at LC114
+C1_dffs[8]_p1_out = C1_dffs[7] & C1_dffs[6] & C1_dffs[5] & C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[8]_or_out = C1_dffs[8]_p1_out;
+C1_dffs[8]_reg_input = C1_dffs[8]_or_out;
+C1_dffs[8] = TFFE(C1_dffs[8]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--clk_div[5] is clk_div[5] at LC61
+clk_div[5]_p1_out = !clk_div[7] & clk_div[6] & C1_dffs[0] & !clk_div[4] & !clk_div[3] & !clk_div[2] & clk_div[5] & clk_div[1];
+clk_div[5]_p2_out = C1_dffs[0] & clk_div[4] & clk_div[3] & clk_div[2] & clk_div[1];
+clk_div[5]_or_out = clk_div[5]_p1_out # clk_div[5]_p2_out;
+clk_div[5]_reg_input = clk_div[5]_or_out;
+clk_div[5] = TFFE(clk_div[5]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--C1_dffs[9] is lpm_counter:cnt_scan_rtl_0|dffs[9] at LC128
+C1_dffs[9]_p1_out = C1_dffs[8] & C1_dffs[7] & C1_dffs[6] & C1_dffs[5] & C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[9]_or_out = C1_dffs[9]_p1_out;
+C1_dffs[9]_reg_input = C1_dffs[9]_or_out;
+C1_dffs[9] = TFFE(C1_dffs[9]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[4] is cnt_delay[4] at LC78
+cnt_delay[4]_p1_out = cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[4]_or_out = cnt_delay[4];
+cnt_delay[4]_reg_input = cnt_delay[4]_p1_out $ cnt_delay[4]_or_out;
+cnt_delay[4] = DFFE(cnt_delay[4]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--C1_dffs[10] is lpm_counter:cnt_scan_rtl_0|dffs[10] at LC126
+C1_dffs[10]_p1_out = C1_dffs[9] & C1_dffs[8] & C1_dffs[7] & C1_dffs[6] & C1_dffs[5] & C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[10]_or_out = C1_dffs[10]_p1_out;
+C1_dffs[10]_reg_input = C1_dffs[10]_or_out;
+C1_dffs[10] = TFFE(C1_dffs[10]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--clk_div[7] is clk_div[7] at LC63
+clk_div[7]_p1_out = clk_div[6] & clk_div[5] & clk_div[4] & clk_div[3] & clk_div[2] & C1_dffs[0] & clk_div[1];
+clk_div[7]_or_out = clk_div[7];
+clk_div[7]_reg_input = clk_div[7]_p1_out $ clk_div[7]_or_out;
+clk_div[7] = DFFE(clk_div[7]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--C1_dffs[11] is lpm_counter:cnt_scan_rtl_0|dffs[11] at LC116
+C1_dffs[11]_p1_out = C1_dffs[10] & C1_dffs[9] & C1_dffs[8] & C1_dffs[7] & C1_dffs[6] & C1_dffs[5] & C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+C1_dffs[11]_or_out = C1_dffs[11]_p1_out;
+C1_dffs[11]_reg_input = C1_dffs[11]_or_out;
+C1_dffs[11] = TFFE(C1_dffs[11]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[5] is cnt_delay[5] at LC77
+cnt_delay[5]_p1_out = cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[5]_or_out = cnt_delay[5];
+cnt_delay[5]_reg_input = cnt_delay[5]_p1_out $ cnt_delay[5]_or_out;
+cnt_delay[5] = DFFE(cnt_delay[5]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L46Q is en[0]~reg0 at LC118
+A1L46Q_p1_out = C1_dffs[11] & C1_dffs[10] & C1_dffs[9] & C1_dffs[8] & C1_dffs[7] & C1_dffs[6] & C1_dffs[5] & C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+A1L46Q_or_out = A1L46Q_p1_out;
+A1L46Q_reg_input = A1L46Q_or_out;
+A1L46Q = TFFE(A1L46Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--A1L66Q is en[1]~reg0 at LC117
+A1L66Q_p1_out = C1_dffs[11] & C1_dffs[10] & C1_dffs[9] & C1_dffs[8] & C1_dffs[7] & C1_dffs[6] & C1_dffs[5] & C1_dffs[4] & C1_dffs[3] & C1_dffs[2] & C1_dffs[1] & C1_dffs[0];
+A1L66Q_or_out = A1L66Q_p1_out;
+A1L66Q_reg_input = A1L66Q_or_out;
+A1L66Q = TFFE(A1L66Q_reg_input, GLOBAL(clk), , rst, );
+
+
+--clk_div[6] is clk_div[6] at LC64
+clk_div[6]_p1_out = !clk_div[7] & C1_dffs[0] & clk_div[5] & !clk_div[4] & !clk_div[3] & !clk_div[2] & clk_div[6] & clk_div[1];
+clk_div[6]_p2_out = C1_dffs[0] & clk_div[5] & clk_div[4] & clk_div[3] & clk_div[2] & clk_div[1];
+clk_div[6]_or_out = clk_div[6]_p1_out # clk_div[6]_p2_out;
+clk_div[6]_reg_input = clk_div[6]_or_out;
+clk_div[6] = TFFE(clk_div[6]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--phase0 is phase0 at LC62
+phase0_p1_out = !phase0 & C1_dffs[0] & clk_div[5] & !clk_div[3] & !clk_div[7] & !clk_div[2] & clk_div[6] & !clk_div[4] & clk_div[1];
+phase0_or_out = phase0_p1_out;
+phase0_reg_input = phase0_or_out;
+phase0 = DFFE(phase0_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[6] is cnt_delay[6] at LC76
+cnt_delay[6]_p1_out = cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[6]_or_out = cnt_delay[6];
+cnt_delay[6]_reg_input = cnt_delay[6]_p1_out $ cnt_delay[6]_or_out;
+cnt_delay[6] = DFFE(cnt_delay[6]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--phase1 is phase1 at LC57
+phase1_p1_out = !phase1 & !clk_div[6] & clk_div[4] & !clk_div[1] & !C1_dffs[0] & !clk_div[5] & clk_div[3] & !clk_div[7] & !clk_div[2];
+phase1_or_out = phase1_p1_out;
+phase1_reg_input = phase1_or_out;
+phase1 = DFFE(phase1_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--phase2 is phase2 at LC58
+phase2_p1_out = !phase2 & C1_dffs[0] & clk_div[5] & !clk_div[3] & !clk_div[7] & !clk_div[2] & !clk_div[6] & clk_div[4] & !clk_div[1];
+phase2_or_out = phase2_p1_out;
+phase2_reg_input = phase2_or_out;
+phase2 = DFFE(phase2_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--phase3 is phase3 at LC60
+phase3_p1_out = !phase3 & clk_div[6] & !clk_div[4] & clk_div[1] & !C1_dffs[0] & !clk_div[5] & clk_div[3] & !clk_div[7] & !clk_div[2];
+phase3_or_out = phase3_p1_out;
+phase3_reg_input = phase3_or_out;
+phase3 = DFFE(phase3_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[7] is cnt_delay[7] at LC75
+cnt_delay[7]_p1_out = cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[7]_or_out = cnt_delay[7];
+cnt_delay[7]_reg_input = cnt_delay[7]_p1_out $ cnt_delay[7]_or_out;
+cnt_delay[7] = DFFE(cnt_delay[7]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L1 is Select~6428 at LC36
+A1L1_p0_out = !A1L76Q & A1L96Q & !A1L09Q & !A1L86Q & !link;
+A1L1_p1_out = !A1L76Q & !A1L96Q & A1L09Q & A1L86Q & !link;
+A1L1_p2_out = !link & A1L37Q & !phase3;
+A1L1_p3_out = !link & !phase3 & A1L17Q;
+A1L1_p4_out = !link & !phase3 & A1L27Q;
+A1L1_or_out = A1L31 # A1L1_p0_out # A1L1_p1_out # A1L1_p2_out # A1L1_p3_out # A1L1_p4_out;
+A1L1 = A1L1_or_out;
+
+
+--link is link at LC80
+link_or_out = !A1L1;
+link_reg_input = link_or_out;
+link = DFFE(link_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[8] is cnt_delay[8] at LC5
+cnt_delay[8]_p1_out = cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0] & A1L59;
+cnt_delay[8]_p2_out = !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[8] & cnt_delay[18] & cnt_delay[10] & cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & !cnt_delay[11] & !cnt_delay[9] & cnt_delay[13] & cnt_delay[12];
+cnt_delay[8]_or_out = cnt_delay[8]_p1_out # cnt_delay[8]_p2_out;
+cnt_delay[8]_reg_input = cnt_delay[8]_or_out;
+cnt_delay[8] = TFFE(cnt_delay[8]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L47 is inner_state~4117 at SEXP24
+A1L47 = EXP(!A1L76Q & !A1L86Q);
+
+
+--A1L57 is inner_state~4118 at SEXP22
+A1L57 = EXP(!A1L37Q & link);
+
+
+--A1L67 is inner_state~4119 at SEXP21
+A1L67 = EXP(!A1L27Q & phase3);
+
+
+--A1L77 is inner_state~4120 at SEXP20
+A1L77 = EXP(!A1L76Q & A1L86Q);
+
+
+--A1L17Q is inner_state~113 at LC19
+A1L17Q_p0_out = !A1L07Q & A1L27Q & A1L37Q & phase3 & !A1L86Q & !A1L96Q;
+A1L17Q_p1_out = A1L57 & !A1L17Q & !A1L07Q;
+A1L17Q_p2_out = !A1L17Q & A1L67;
+A1L17Q_p3_out = !A1L07Q & A1L77 & A1L27Q & A1L37Q & phase3 & A1L09Q;
+A1L17Q_p4_out = A1L27Q & A1L37Q & phase3 & A1L09Q & A1L76Q & !A1L96Q;
+A1L17Q_or_out = A1L28 # A1L17Q_p0_out # A1L17Q_p1_out # A1L17Q_p2_out # A1L17Q_p3_out # A1L17Q_p4_out;
+A1L17Q_reg_input = !(A1L17Q_or_out);
+A1L17Q = DFFE(A1L17Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[9] is cnt_delay[9] at LC68
+cnt_delay[9]_p1_out = cnt_delay[8] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[9]_or_out = cnt_delay[9];
+cnt_delay[9]_reg_input = cnt_delay[9]_p1_out $ cnt_delay[9]_or_out;
+cnt_delay[9] = DFFE(cnt_delay[9]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L37Q is inner_state~115 at LC56
+A1L37Q_p0_out = A1L37Q & A1L09Q & A1L76Q & phase3 & !A1L17Q;
+A1L37Q_p1_out = !A1L37Q & !A1L27Q;
+A1L37Q_p2_out = A1L37Q & !A1L09Q & !A1L96Q & !A1L76Q & phase3 & !A1L17Q;
+A1L37Q_p3_out = A1L37Q & A1L09Q & phase3 & !A1L17Q & !A1L86Q;
+A1L37Q_p4_out = A1L37Q & !A1L96Q & phase3 & !A1L17Q & !A1L86Q;
+A1L37Q_or_out = A1L48 # A1L37Q_p0_out # A1L37Q_p1_out # A1L37Q_p2_out # A1L37Q_p3_out # A1L37Q_p4_out;
+A1L37Q_reg_input = !(A1L37Q_or_out);
+A1L37Q = DFFE(A1L37Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[10] is cnt_delay[10] at LC16
+cnt_delay[10]_p1_out = cnt_delay[9] & cnt_delay[8] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0] & A1L59;
+cnt_delay[10]_p2_out = !cnt_delay[9] & cnt_delay[8] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[10] & cnt_delay[18] & cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & !cnt_delay[11] & cnt_delay[13] & cnt_delay[12];
+cnt_delay[10]_or_out = cnt_delay[10]_p1_out # cnt_delay[10]_p2_out;
+cnt_delay[10]_reg_input = cnt_delay[10]_or_out;
+cnt_delay[10] = TFFE(cnt_delay[10]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--cnt_delay[11] is cnt_delay[11] at LC4
+cnt_delay[11]_p1_out = cnt_delay[10] & cnt_delay[9] & cnt_delay[8] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[11]_or_out = cnt_delay[11];
+cnt_delay[11]_reg_input = cnt_delay[11]_p1_out $ cnt_delay[11]_or_out;
+cnt_delay[11] = DFFE(cnt_delay[11]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L87 is inner_state~4136 at SEXP54
+A1L87 = EXP(!A1L09Q & !phase1);
+
+
+--A1L97 is inner_state~4137 at SEXP52
+A1L97 = EXP(!A1L37Q & !A1L17Q);
+
+
+--A1L08 is inner_state~4138 at SEXP49
+A1L08 = EXP(A1L96Q & !A1L09Q);
+
+
+--A1L27Q is inner_state~114 at LC51
+A1L27Q_p0_out = A1L27Q & !A1L07Q & A1L97 & phase3 & A1L08 & !A1L86Q;
+A1L27Q_p1_out = !A1L09Q & !A1L19Q;
+A1L27Q_p2_out = A1L87 & !A1L27Q & !A1L76Q & !A1L37Q & A1L07Q;
+A1L27Q_p3_out = !A1L09Q & A1L27Q & !A1L76Q & !A1L07Q & A1L97 & !A1L96Q & phase3;
+A1L27Q_p4_out = A1L09Q & A1L27Q & A1L76Q & !A1L07Q & A1L97 & phase3;
+A1L27Q_or_out = A1L68 # A1L27Q_p0_out # A1L27Q_p1_out # A1L27Q_p2_out # A1L27Q_p3_out # A1L27Q_p4_out;
+A1L27Q_reg_input = !(A1L27Q_or_out);
+A1L27Q = DFFE(A1L27Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--A1L07Q is inner_state~112 at LC53
+A1L07Q_p0_out = !A1L19Q & A1L07Q & !A1L09Q;
+A1L07Q_p1_out = A1L76Q & A1L37Q & phase3 & !A1L17Q & A1L27Q & !A1L86Q & A1L19Q & !A1L07Q;
+A1L07Q_p2_out = A1L37Q & phase3 & !A1L17Q & A1L27Q & !A1L86Q & A1L19Q & !A1L07Q & !A1L96Q;
+A1L07Q_p3_out = phase3 & A1L17Q & !A1L27Q & !A1L86Q & A1L07Q & !A1L96Q;
+A1L07Q_p4_out = phase3 & A1L17Q & !A1L27Q & !A1L86Q & A1L07Q & A1L09Q;
+A1L07Q_or_out = A1L78 # A1L07Q_p0_out # A1L07Q_p1_out # A1L07Q_p2_out # A1L07Q_p3_out # A1L07Q_p4_out;
+A1L07Q_reg_input = A1L07Q_or_out;
+A1L07Q = TFFE(A1L07Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[12] is cnt_delay[12] at LC9
+cnt_delay[12]_p1_out = cnt_delay[11] & cnt_delay[10] & cnt_delay[9] & cnt_delay[8] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0] & A1L59;
+cnt_delay[12]_p2_out = !cnt_delay[11] & cnt_delay[10] & !cnt_delay[9] & cnt_delay[8] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[12] & cnt_delay[18] & cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & cnt_delay[13];
+cnt_delay[12]_or_out = cnt_delay[12]_p1_out # cnt_delay[12]_p2_out;
+cnt_delay[12]_reg_input = cnt_delay[12]_or_out;
+cnt_delay[12] = TFFE(cnt_delay[12]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--cnt_delay[13] is cnt_delay[13] at LC11
+cnt_delay[13]_p1_out = cnt_delay[12] & cnt_delay[11] & cnt_delay[10] & cnt_delay[9] & cnt_delay[8] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0] & A1L59;
+cnt_delay[13]_p2_out = cnt_delay[12] & !cnt_delay[11] & cnt_delay[10] & !cnt_delay[9] & cnt_delay[8] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[13] & cnt_delay[18] & cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14];
+cnt_delay[13]_or_out = cnt_delay[13]_p1_out # cnt_delay[13]_p2_out;
+cnt_delay[13]_reg_input = cnt_delay[13]_or_out;
+cnt_delay[13] = TFFE(cnt_delay[13]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L96Q is i2c_state~52 at LC48
+A1L96Q_p1_out = A1L76Q & !A1L86Q & A1L07Q & A1L17Q & A1L09Q & phase3 & !A1L96Q;
+A1L96Q_p2_out = !A1L09Q & A1L96Q & !A1L19Q;
+A1L96Q_p3_out = !A1L76Q & A1L07Q & A1L17Q & A1L09Q & phase3 & A1L96Q;
+A1L96Q_p4_out = A1L86Q & A1L07Q & A1L17Q & A1L09Q & phase3 & A1L96Q;
+A1L96Q_or_out = A1L96Q_p1_out # A1L96Q_p2_out # A1L96Q_p3_out # A1L96Q_p4_out;
+A1L96Q_reg_input = A1L96Q_or_out;
+A1L96Q = TFFE(A1L96Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[14] is cnt_delay[14] at LC15
+cnt_delay[14]_p1_out = cnt_delay[13] & cnt_delay[12] & cnt_delay[11] & cnt_delay[10] & cnt_delay[9] & cnt_delay[8] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[14]_or_out = cnt_delay[14];
+cnt_delay[14]_reg_input = cnt_delay[14]_p1_out $ cnt_delay[14]_or_out;
+cnt_delay[14] = DFFE(cnt_delay[14]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L86Q is i2c_state~51 at LC46
+A1L86Q_p1_out = A1L96Q & A1L07Q & A1L17Q & phase3 & A1L09Q & !A1L86Q;
+A1L86Q_p2_out = A1L07Q & A1L17Q & phase3 & !A1L09Q & !A1L86Q & A1L76Q & A1L19Q;
+A1L86Q_p3_out = !A1L09Q & A1L86Q & !A1L19Q;
+A1L86Q_or_out = A1L86Q_p1_out # A1L86Q_p2_out # A1L86Q_p3_out;
+A1L86Q_reg_input = A1L86Q_or_out;
+A1L86Q = TFFE(A1L86Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[15] is cnt_delay[15] at LC14
+cnt_delay[15]_p1_out = cnt_delay[14] & cnt_delay[13] & cnt_delay[12] & cnt_delay[11] & cnt_delay[10] & cnt_delay[9] & cnt_delay[8] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[15]_or_out = cnt_delay[15];
+cnt_delay[15]_reg_input = cnt_delay[15]_p1_out $ cnt_delay[15]_or_out;
+cnt_delay[15] = DFFE(cnt_delay[15]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L76Q is i2c_state~50 at LC47
+A1L76Q_p0_out = !A1L09Q & !A1L86Q & A1L07Q & A1L17Q & phase3 & A1L76Q;
+A1L76Q_p1_out = A1L09Q & !A1L86Q & A1L07Q & A1L17Q & phase3 & !A1L96Q;
+A1L76Q_p2_out = !A1L86Q & A1L07Q & A1L17Q & phase3 & !A1L96Q & A1L19Q;
+A1L76Q_p3_out = A1L09Q & A1L07Q & A1L17Q & phase3 & A1L96Q & !A1L76Q;
+A1L76Q_p4_out = !A1L09Q & !A1L19Q & A1L76Q;
+A1L76Q_or_out = A1L76Q_p0_out # A1L76Q_p1_out # A1L76Q_p2_out # A1L76Q_p3_out # A1L76Q_p4_out;
+A1L76Q_reg_input = A1L76Q_or_out;
+A1L76Q = TFFE(A1L76Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--cnt_delay[16] is cnt_delay[16] at LC13
+cnt_delay[16]_p1_out = cnt_delay[15] & cnt_delay[14] & cnt_delay[13] & cnt_delay[12] & cnt_delay[10] & cnt_delay[11] & cnt_delay[8] & cnt_delay[9] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[16]_or_out = cnt_delay[16]_p1_out;
+cnt_delay[16]_reg_input = cnt_delay[16]_or_out;
+cnt_delay[16] = TFFE(cnt_delay[16]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--cnt_delay[17] is cnt_delay[17] at LC10
+cnt_delay[17]_p1_out = cnt_delay[16] & cnt_delay[15] & cnt_delay[14] & cnt_delay[13] & cnt_delay[12] & cnt_delay[10] & cnt_delay[11] & cnt_delay[8] & cnt_delay[9] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0];
+cnt_delay[17]_or_out = cnt_delay[17];
+cnt_delay[17]_reg_input = cnt_delay[17]_p1_out $ cnt_delay[17]_or_out;
+cnt_delay[17] = DFFE(cnt_delay[17]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--cnt_delay[18] is cnt_delay[18] at LC6
+cnt_delay[18]_p1_out = cnt_delay[17] & cnt_delay[16] & cnt_delay[15] & cnt_delay[14] & cnt_delay[13] & cnt_delay[12] & cnt_delay[10] & cnt_delay[11] & cnt_delay[8] & cnt_delay[9] & cnt_delay[7] & cnt_delay[6] & cnt_delay[5] & cnt_delay[4] & cnt_delay[3] & cnt_delay[2] & cnt_delay[1] & cnt_delay[0] & A1L59;
+cnt_delay[18]_p2_out = !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & cnt_delay[13] & cnt_delay[12] & cnt_delay[10] & !cnt_delay[11] & cnt_delay[8] & !cnt_delay[9] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[18] & cnt_delay[19];
+cnt_delay[18]_or_out = cnt_delay[18]_p1_out # cnt_delay[18]_p2_out;
+cnt_delay[18]_reg_input = cnt_delay[18]_or_out;
+cnt_delay[18] = TFFE(cnt_delay[18]_reg_input, GLOBAL(clk), GLOBAL(rst), , start_delaycnt);
+
+
+--A1L29 is main_state~600 at SEXP6
+A1L29 = EXP(A1L76Q & A1L86Q & A1L27Q & phase3);
+
+
+--A1L39 is main_state~601 at SEXP5
+A1L39 = EXP(A1L76Q & A1L27Q & phase3);
+
+
+--A1L49 is main_state~602 at SEXP4
+A1L49 = EXP(sda_buf & phase1 & A1L17Q);
+
+
+--A1L09Q is main_state~65 at LC3
+A1L09Q_p1_out = !A1L19Q & cnt_delay[18] & cnt_delay[10] & cnt_delay[8] & cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & !cnt_delay[11] & !cnt_delay[9] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[13] & cnt_delay[12] & !rd_input & wr_input;
+A1L09Q_p2_out = !A1L07Q & A1L09Q;
+A1L09Q_p3_out = A1L09Q & A1L39 & A1L86Q & !A1L96Q;
+A1L09Q_p4_out = A1L09Q & A1L49 & A1L29;
+A1L09Q_or_out = A1L09Q_p1_out # A1L09Q_p2_out # A1L09Q_p3_out # A1L09Q_p4_out;
+A1L09Q_reg_input = A1L09Q_or_out;
+A1L09Q = DFFE(A1L09Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--A1L3 is Select~6438 at LC45
+A1L3_p0_out = A1L17Q & A1L76Q & A1L86Q & !A1L07Q & A1L051 & phase0;
+A1L3_p1_out = A1L76Q & A1L86Q & !A1L07Q & A1L051 & phase0 & A1L27Q;
+A1L3_p2_out = A1L17Q & A1L76Q & A1L86Q & A1L051 & phase0 & A1L27Q;
+A1L3_p3_out = !A1L17Q & A1L76Q & A1L86Q & A1L07Q & A1L051 & phase0 & !A1L27Q;
+A1L3_p4_out = A1L76Q & A1L86Q & A1L051 & phase0 & A1L37Q;
+A1L3_or_out = A1L51 # A1L3_p0_out # A1L3_p1_out # A1L3_p2_out # A1L3_p3_out # A1L3_p4_out;
+A1L3 = A1L3_or_out;
+
+
+--A1L4 is Select~6444 at LC31
+A1L4_p0_out = A1L96Q & A1L17Q & !phase3 & !A1L07Q & sda_buf;
+A1L4_p1_out = A1L96Q & A1L17Q & A1L07Q & A1L051 & phase0;
+A1L4_p2_out = A1L96Q & !phase3 & A1L37Q & sda_buf;
+A1L4_p3_out = A1L96Q & !A1L17Q & phase3 & A1L37Q & A1L27Q;
+A1L4_p4_out = A1L96Q & A1L07Q & sda_buf & !phase0;
+A1L4_or_out = A1L71 # A1L4_p0_out # A1L4_p1_out # A1L4_p2_out # A1L4_p3_out # A1L4_p4_out;
+A1L4 = A1L4_or_out;
+
+
+--A1L5 is Select~6450 at LC28
+A1L5_p0_out = A1L76Q & !A1L86Q & !phase3 & sda_buf & !phase0;
+A1L5_p1_out = A1L76Q & !A1L86Q & A1L07Q & A1L17Q & A1L051 & phase0;
+A1L5_p2_out = A1L76Q & !A1L86Q & !phase3 & sda_buf & A1L051;
+A1L5_p3_out = A1L76Q & !A1L86Q & A1L07Q & phase3 & A1L17Q;
+A1L5_p4_out = A1L76Q & !A1L86Q & A1L07Q & sda_buf & A1L37Q;
+A1L5_or_out = A1L81 # A1L5_p0_out # A1L5_p1_out # A1L5_p2_out # A1L5_p3_out # A1L5_p4_out;
+A1L5 = A1L5_or_out;
+
+
+--A1L6 is Select~6456 at LC42
+A1L6_p0_out = !A1L76Q & !A1L86Q & !A1L96Q & sda_buf & A1L37Q & !phase3;
+A1L6_p1_out = A1L07Q & !A1L17Q & !A1L76Q & !A1L86Q & !A1L96Q & sda_buf;
+A1L6_p2_out = !A1L17Q & !A1L76Q & !A1L86Q & !A1L96Q & sda_buf & !A1L27Q & !A1L37Q & !phase1;
+A1L6_p3_out = A1L17Q & !A1L76Q & !A1L86Q & !A1L96Q & A1L27Q & !A1L37Q & phase3;
+A1L6_p4_out = A1L07Q & A1L17Q & !A1L76Q & !A1L86Q & !A1L96Q & !phase3 & A1L051 & phase0;
+A1L6_or_out = A1L91 # A1L6_p0_out # A1L6_p1_out # A1L6_p2_out # A1L6_p3_out # A1L6_p4_out;
+A1L6 = A1L6_or_out;
+
+
+--A1L7 is Select~6462 at LC26
+A1L7_p0_out = !A1L76Q & A1L86Q & phase1 & A1L07Q & !phase0 & sda_buf;
+A1L7_p1_out = !A1L27Q & !A1L76Q & A1L86Q & A1L37Q & !A1L17Q & phase3 & !writeData_reg[2];
+A1L7_p2_out = A1L27Q & !A1L76Q & A1L86Q & A1L37Q & A1L17Q & phase3 & writeData_reg[3];
+A1L7_p3_out = !A1L76Q & A1L86Q & A1L17Q & phase1 & A1L07Q & A1L051 & phase0;
+A1L7_p4_out = !A1L76Q & A1L86Q & A1L17Q & !phase3 & A1L07Q & A1L051 & phase0;
+A1L7_or_out = A1L12 # A1L7_p0_out # A1L7_p1_out # A1L7_p2_out # A1L7_p3_out # A1L7_p4_out;
+A1L7 = A1L7_or_out;
+
+
+--A1L8 is Select~6468 at LC23
+A1L8_p0_out = A1L76Q & !A1L86Q & !phase3 & sda_buf & !phase0;
+A1L8_p1_out = A1L76Q & !A1L86Q & phase3 & A1L37Q & A1L27Q & A1L17Q;
+A1L8_p2_out = A1L76Q & !A1L86Q & !A1L37Q & !A1L17Q & sda_buf;
+A1L8_p3_out = A1L76Q & !A1L86Q & phase3 & !A1L37Q & A1L27Q & !A1L17Q & !A1L07Q;
+A1L8_p4_out = A1L76Q & !A1L86Q & !phase3 & A1L17Q & A1L07Q & A1L051 & phase0;
+A1L8_or_out = A1L22 # A1L8_p0_out # A1L8_p1_out # A1L8_p2_out # A1L8_p3_out # A1L8_p4_out;
+A1L8 = A1L8_or_out;
+
+
+--sda_buf is sda_buf at LC38
+sda_buf_p1_out = A1L09Q & !A1L3 & !A1L4 & !A1L5 & !A1L6 & A1L2;
+sda_buf_p2_out = !A1L09Q & !A1L6 & !A1L7 & !A1L8 & A1L19Q & A1L9 & A1L01;
+sda_buf_or_out = sda_buf_p1_out # sda_buf_p2_out;
+sda_buf_reg_input = !(sda_buf_or_out);
+sda_buf = DFFE(sda_buf_reg_input, GLOBAL(clk), , rst, );
+
+
+--readData_reg[0] is readData_reg[0] at LC67
+readData_reg[0]_p0_out = !A1L051 & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & readData_reg[0];
+readData_reg[0]_p1_out = A1L051 & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & !readData_reg[0];
+readData_reg[0]_p2_out = !A1L051 & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[0] & A1L27Q;
+readData_reg[0]_p3_out = !A1L051 & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[0] & A1L17Q;
+readData_reg[0]_p4_out = !A1L051 & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & readData_reg[0] & !A1L27Q & !A1L17Q;
+readData_reg[0]_or_out = A1L151 # readData_reg[0]_p0_out # readData_reg[0]_p1_out # readData_reg[0]_p2_out # readData_reg[0]_p3_out # readData_reg[0]_p4_out;
+readData_reg[0]_reg_input = readData_reg[0]_or_out;
+readData_reg[0] = TFFE(readData_reg[0]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--readData_reg[1] is readData_reg[1] at LC71
+readData_reg[1]_p0_out = !readData_reg[0] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & readData_reg[1];
+readData_reg[1]_p1_out = readData_reg[0] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & !readData_reg[1];
+readData_reg[1]_p2_out = !readData_reg[0] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[1] & A1L27Q;
+readData_reg[1]_p3_out = !readData_reg[0] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[1] & A1L17Q;
+readData_reg[1]_p4_out = !readData_reg[0] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & readData_reg[1] & !A1L27Q & !A1L17Q;
+readData_reg[1]_or_out = A1L501 # readData_reg[1]_p0_out # readData_reg[1]_p1_out # readData_reg[1]_p2_out # readData_reg[1]_p3_out # readData_reg[1]_p4_out;
+readData_reg[1]_reg_input = readData_reg[1]_or_out;
+readData_reg[1] = TFFE(readData_reg[1]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--A1L59 is main_state~608 at SEXP3
+A1L59 = EXP(cnt_delay[18] & cnt_delay[10] & cnt_delay[8] & cnt_delay[19] & !cnt_delay[17] & !cnt_delay[16] & !cnt_delay[15] & !cnt_delay[14] & !cnt_delay[11] & !cnt_delay[9] & !cnt_delay[7] & !cnt_delay[6] & !cnt_delay[5] & !cnt_delay[4] & !cnt_delay[3] & !cnt_delay[2] & !cnt_delay[1] & !cnt_delay[0] & cnt_delay[13] & cnt_delay[12]);
+
+
+--A1L69 is main_state~609 at SEXP1
+A1L69 = EXP(A1L86Q & !A1L96Q);
+
+
+--A1L19Q is main_state~66 at LC2
+A1L19Q_p0_out = A1L09Q & A1L07Q & A1L69 & sda_buf & phase1 & A1L17Q;
+A1L19Q_p1_out = !A1L09Q & A1L19Q & !A1L86Q & !A1L76Q & A1L96Q;
+A1L19Q_p2_out = A1L09Q & A1L86Q & A1L76Q & A1L07Q & A1L27Q & phase3;
+A1L19Q_p3_out = !A1L19Q & rd_input & wr_input;
+A1L19Q_p4_out = !A1L19Q & A1L59;
+A1L19Q_or_out = A1L79 # A1L19Q_p0_out # A1L19Q_p1_out # A1L19Q_p2_out # A1L19Q_p3_out # A1L19Q_p4_out;
+A1L19Q_reg_input = !(A1L19Q_or_out);
+A1L19Q = DFFE(A1L19Q_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--readData_reg[2] is readData_reg[2] at LC73
+readData_reg[2]_p0_out = !readData_reg[1] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & readData_reg[2];
+readData_reg[2]_p1_out = readData_reg[1] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & !readData_reg[2];
+readData_reg[2]_p2_out = !readData_reg[1] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[2] & A1L27Q;
+readData_reg[2]_p3_out = !readData_reg[1] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[2] & A1L17Q;
+readData_reg[2]_p4_out = !readData_reg[1] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & readData_reg[2] & !A1L27Q & !A1L17Q;
+readData_reg[2]_or_out = A1L701 # readData_reg[2]_p0_out # readData_reg[2]_p1_out # readData_reg[2]_p2_out # readData_reg[2]_p3_out # readData_reg[2]_p4_out;
+readData_reg[2]_reg_input = readData_reg[2]_or_out;
+readData_reg[2] = TFFE(readData_reg[2]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--A1L741Q is scl~reg0 at LC40
+A1L741Q_p1_out = A1L741Q & !phase2;
+A1L741Q_or_out = A1L741Q_p1_out # !A1L19Q # phase0;
+A1L741Q_reg_input = A1L741Q_or_out;
+A1L741Q = DFFE(A1L741Q_reg_input, GLOBAL(clk), , rst, );
+
+
+--readData_reg[3] is readData_reg[3] at LC103
+readData_reg[3]_p0_out = !readData_reg[2] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & readData_reg[3];
+readData_reg[3]_p1_out = readData_reg[2] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & !readData_reg[3];
+readData_reg[3]_p2_out = !readData_reg[2] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[3] & A1L27Q;
+readData_reg[3]_p3_out = !readData_reg[2] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[3] & A1L17Q;
+readData_reg[3]_p4_out = !readData_reg[2] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & readData_reg[3] & !A1L27Q & !A1L17Q;
+readData_reg[3]_or_out = A1L901 # readData_reg[3]_p0_out # readData_reg[3]_p1_out # readData_reg[3]_p2_out # readData_reg[3]_p3_out # readData_reg[3]_p4_out;
+readData_reg[3]_reg_input = readData_reg[3]_or_out;
+readData_reg[3] = TFFE(readData_reg[3]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--readData_reg[4] is readData_reg[4] at LC101
+readData_reg[4]_p0_out = !readData_reg[3] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & readData_reg[4];
+readData_reg[4]_p1_out = readData_reg[3] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & !readData_reg[4];
+readData_reg[4]_p2_out = !readData_reg[3] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[4] & A1L27Q;
+readData_reg[4]_p3_out = !readData_reg[3] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[4] & A1L17Q;
+readData_reg[4]_p4_out = !readData_reg[3] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & readData_reg[4] & !A1L27Q & !A1L17Q;
+readData_reg[4]_or_out = A1L111 # readData_reg[4]_p0_out # readData_reg[4]_p1_out # readData_reg[4]_p2_out # readData_reg[4]_p3_out # readData_reg[4]_p4_out;
+readData_reg[4]_reg_input = readData_reg[4]_or_out;
+readData_reg[4] = TFFE(readData_reg[4]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--readData_reg[5] is readData_reg[5] at LC105
+readData_reg[5]_p0_out = !readData_reg[4] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & readData_reg[5];
+readData_reg[5]_p1_out = readData_reg[4] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & !readData_reg[5];
+readData_reg[5]_p2_out = !readData_reg[4] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[5] & A1L27Q;
+readData_reg[5]_p3_out = !readData_reg[4] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[5] & A1L17Q;
+readData_reg[5]_p4_out = !readData_reg[4] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & readData_reg[5] & !A1L27Q & !A1L17Q;
+readData_reg[5]_or_out = A1L311 # readData_reg[5]_p0_out # readData_reg[5]_p1_out # readData_reg[5]_p2_out # readData_reg[5]_p3_out # readData_reg[5]_p4_out;
+readData_reg[5]_reg_input = readData_reg[5]_or_out;
+readData_reg[5] = TFFE(readData_reg[5]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--readData_reg[6] is readData_reg[6] at LC112
+readData_reg[6]_p0_out = !readData_reg[5] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & readData_reg[6];
+readData_reg[6]_p1_out = readData_reg[5] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & !readData_reg[6];
+readData_reg[6]_p2_out = !readData_reg[5] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[6] & A1L27Q;
+readData_reg[6]_p3_out = !readData_reg[5] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[6] & A1L17Q;
+readData_reg[6]_p4_out = !readData_reg[5] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & readData_reg[6] & !A1L27Q & !A1L17Q;
+readData_reg[6]_or_out = A1L511 # readData_reg[6]_p0_out # readData_reg[6]_p1_out # readData_reg[6]_p2_out # readData_reg[6]_p3_out # readData_reg[6]_p4_out;
+readData_reg[6]_reg_input = readData_reg[6]_or_out;
+readData_reg[6] = TFFE(readData_reg[6]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--readData_reg[7] is readData_reg[7] at LC110
+readData_reg[7]_p0_out = !readData_reg[6] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & readData_reg[7];
+readData_reg[7]_p1_out = readData_reg[6] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & A1L37Q & !readData_reg[7];
+readData_reg[7]_p2_out = !readData_reg[6] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[7] & A1L27Q;
+readData_reg[7]_p3_out = !readData_reg[6] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & readData_reg[7] & A1L17Q;
+readData_reg[7]_p4_out = !readData_reg[6] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & readData_reg[7] & !A1L27Q & !A1L17Q;
+readData_reg[7]_or_out = A1L711 # readData_reg[7]_p0_out # readData_reg[7]_p1_out # readData_reg[7]_p2_out # readData_reg[7]_p3_out # readData_reg[7]_p4_out;
+readData_reg[7]_reg_input = readData_reg[7]_or_out;
+readData_reg[7] = TFFE(readData_reg[7]_reg_input, GLOBAL(clk), GLOBAL(rst), , );
+
+
+--A1L911 is reduce_or~2464 at LC108
+A1L911_p0_out = A1L46Q & readData_reg[7];
+A1L911_p1_out = A1L66Q & writeData_reg[1] & !writeData_reg[3] & !writeData_reg[2] & !writeData_reg[0];
+A1L911_p2_out = !A1L66Q & readData_reg[2] & !readData_reg[1] & readData_reg[3] & !readData_reg[0];
+A1L911_p3_out = readData_reg[2] & readData_reg[1] & !readData_reg[3] & readData_reg[0] & A1L46Q;
+A1L911_p4_out = !A1L66Q & !A1L46Q;
+A1L911_or_out = A1L731 # A1L911_p0_out # A1L911_p1_out # A1L911_p2_out # A1L911_p3_out # A1L911_p4_out;
+A1L911 = A1L911_or_out;
+
+
+--A1L021 is reduce_or~2465 at SEXP96
+A1L021 = EXP(readData_reg[1] & !readData_reg[2]);
+
+
+--A1L121 is reduce_or~2466 at SEXP95
+A1L121 = EXP(!readData_reg[1] & readData_reg[2]);
+
+
+--A1L221 is reduce_or~2467 at SEXP89
+A1L221 = EXP(!writeData_reg[2] & !writeData_reg[1]);
+
+
+--A1L321 is reduce_or~2468 at SEXP83
+A1L321 = EXP(writeData_reg[2] & writeData_reg[1]);
+
+
+--A1L421 is reduce_or~2469 at SEXP82
+A1L421 = EXP(!readData_reg[1] & !readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7] & readData_reg[2] & A1L46Q & !readData_reg[3]);
+
+
+--A1L521 is reduce_or~2470 at SEXP81
+A1L521 = EXP(!A1L46Q & !A1L66Q);
+
+
+--A1L621 is reduce_or~2471 at SEXP94
+A1L621 = EXP(A1L46Q & A1L66Q);
+
+
+--A1L721 is reduce_or~2472 at SEXP92
+A1L721 = EXP(!writeData_reg[2] & !writeData_reg[3] & !writeData_reg[1] & !A1L46Q);
+
+
+--A1L821 is reduce_or~2477 at LC86
+A1L821_p1_out = A1L421 & A1L521 & A1L621 & A1L721;
+A1L821_p0_out = A1L421 & A1L521 & A1L621 & A1L721 & !A1L46Q & A1L321 & writeData_reg[0];
+A1L821_p2_out = A1L421 & A1L521 & A1L621 & A1L721 & A1L021 & !readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7] & !readData_reg[0] & A1L46Q;
+A1L821_p3_out = A1L421 & A1L521 & A1L621 & A1L721 & !readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7] & A1L46Q & A1L121 & readData_reg[3];
+A1L821_p4_out = A1L421 & A1L521 & A1L621 & A1L721 & !A1L46Q & A1L221 & writeData_reg[3];
+A1L821_or_out = A1L821_p0_out # A1L821_p2_out # A1L821_p3_out # A1L821_p4_out;
+A1L821 = A1L821_p1_out $ A1L821_or_out;
+
+
+--A1L921 is reduce_or~2480 at SEXP99
+A1L921 = EXP(!readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7]);
+
+
+--A1L031 is reduce_or~2481 at SEXP100
+A1L031 = EXP(readData_reg[0] & !readData_reg[1]);
+
+
+--A1L131 is reduce_or~2482 at SEXP102
+A1L131 = EXP(!writeData_reg[0] & !writeData_reg[1]);
+
+
+--A1L231 is reduce_or~2488 at LC97
+A1L231_p0_out = !A1L46Q & A1L66Q & writeData_reg[3] & !writeData_reg[2] & A1L131;
+A1L231_p1_out = !readData_reg[3] & readData_reg[1] & !readData_reg[0] & !readData_reg[2] & A1L46Q & !A1L66Q;
+A1L231_p2_out = !A1L46Q & A1L66Q & !writeData_reg[3] & writeData_reg[1] & writeData_reg[0] & writeData_reg[2];
+A1L231_p3_out = A1L46Q & !A1L66Q & A1L921;
+A1L231_p4_out = readData_reg[3] & readData_reg[2] & A1L46Q & !A1L66Q & A1L031;
+A1L231_or_out = A1L231_p0_out # A1L231_p1_out # A1L231_p2_out # A1L231_p3_out # A1L231_p4_out;
+A1L231 = A1L231_or_out;
+
+
+--A1L331 is reduce_or~2489 at LC85
+A1L331_p1_out = A1L46Q & !A1L66Q;
+A1L331_p0_out = !readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7] & !readData_reg[0] & A1L46Q & !A1L66Q & !readData_reg[2];
+A1L331_p2_out = !readData_reg[1] & readData_reg[3] & !readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7] & readData_reg[0] & A1L46Q & !A1L66Q;
+A1L331_p3_out = readData_reg[1] & !readData_reg[3] & !readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7] & readData_reg[0] & A1L46Q & !A1L66Q;
+A1L331_p4_out = !readData_reg[1] & !readData_reg[3] & !readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7] & !readData_reg[0] & A1L46Q & !A1L66Q;
+A1L331_or_out = A1L831 # A1L331_p0_out # A1L331_p2_out # A1L331_p3_out # A1L331_p4_out;
+A1L331 = A1L331_p1_out $ A1L331_or_out;
+
+
+--A1L431 is reduce_or~2502 at LC93
+A1L431_p0_out = A1L46Q & !A1L66Q & A1L441;
+A1L431_p1_out = readData_reg[3] & !readData_reg[2] & !readData_reg[0] & readData_reg[1] & A1L46Q & !A1L66Q;
+A1L431_p2_out = !readData_reg[2] & readData_reg[0] & !readData_reg[1] & A1L46Q & !A1L66Q;
+A1L431_p3_out = !A1L46Q & A1L66Q & writeData_reg[2] & writeData_reg[3] & writeData_reg[1] & writeData_reg[0];
+A1L431_p4_out = !A1L46Q & A1L66Q & writeData_reg[2] & !writeData_reg[1] & !writeData_reg[0];
+A1L431_or_out = A1L931 # A1L431_p0_out # A1L431_p1_out # A1L431_p2_out # A1L431_p3_out # A1L431_p4_out;
+A1L431 = A1L431_or_out;
+
+
+--A1L531 is reduce_or~2509 at LC88
+A1L531_p0_out = A1L46Q & !A1L66Q & A1L441;
+A1L531_p1_out = readData_reg[0] & readData_reg[3] & !readData_reg[1] & readData_reg[2] & A1L46Q & !A1L66Q;
+A1L531_p2_out = readData_reg[0] & readData_reg[3] & readData_reg[1] & !readData_reg[2] & A1L46Q & !A1L66Q;
+A1L531_p3_out = !A1L46Q & A1L66Q & !writeData_reg[0] & writeData_reg[3] & !writeData_reg[1] & !writeData_reg[2];
+A1L531_p4_out = !A1L46Q & A1L66Q & !writeData_reg[0] & writeData_reg[3] & writeData_reg[1] & writeData_reg[2];
+A1L531_or_out = A1L041 # A1L531_p0_out # A1L531_p1_out # A1L531_p2_out # A1L531_p3_out # A1L531_p4_out;
+A1L531 = A1L531_or_out;
+
+
+--A1L631 is reduce_or~2515 at LC91
+A1L631_p0_out = !A1L46Q & A1L66Q & !writeData_reg[0] & !writeData_reg[3];
+A1L631_p1_out = readData_reg[5] & A1L46Q & !A1L66Q;
+A1L631_p2_out = A1L46Q & !A1L66Q & readData_reg[6];
+A1L631_p3_out = A1L46Q & !A1L66Q & readData_reg[7];
+A1L631_p4_out = A1L46Q & !A1L66Q & readData_reg[0] & !readData_reg[3];
+A1L631_or_out = A1L141 # A1L631_p0_out # A1L631_p1_out # A1L631_p2_out # A1L631_p3_out # A1L631_p4_out;
+A1L631 = A1L631_or_out;
+
+
+--A1L11 is Select~6482 at LC33
+A1L11_p0_out = !A1L09Q & !A1L19Q;
+A1L11_p1_out = A1L07Q & !A1L37Q & !A1L27Q & !A1L17Q & !A1L76Q & phase3 & !A1L96Q & !A1L09Q;
+A1L11_p2_out = A1L07Q & !A1L37Q & !A1L27Q & !A1L17Q & phase3 & A1L09Q & !A1L86Q;
+A1L11_p3_out = A1L07Q & !A1L37Q & !A1L27Q & !A1L17Q & phase3 & !A1L96Q & !A1L86Q;
+A1L11_p4_out = A1L07Q & !A1L37Q & !A1L27Q & !A1L76Q & phase3 & A1L96Q & A1L09Q & !A1L86Q;
+A1L11 = A1L11_p0_out # A1L11_p1_out # A1L11_p2_out # A1L11_p3_out # A1L11_p4_out;
+
+
+--A1L21 is Select~6488 at LC34
+A1L21_p0_out = !A1L37Q & !A1L27Q & !link & A1L09Q & A1L86Q & A1L07Q & !A1L76Q;
+A1L21_p1_out = !A1L37Q & !A1L27Q & !A1L17Q & !link & !phase1;
+A1L21_p2_out = !A1L37Q & !A1L27Q & !A1L17Q & !link & !A1L09Q & A1L86Q;
+A1L21_p3_out = !A1L37Q & !A1L17Q & !link & A1L07Q;
+A1L21_p4_out = !A1L37Q & !A1L27Q & !link & phase1 & A1L86Q & A1L07Q & !A1L76Q;
+A1L21 = A1L11 # A1L21_p0_out # A1L21_p1_out # A1L21_p2_out # A1L21_p3_out # A1L21_p4_out;
+
+
+--A1L31 is Select~6494 at LC35
+A1L31_p0_out = A1L76Q & !link & !A1L96Q & A1L86Q & !A1L07Q;
+A1L31_p1_out = !A1L37Q & !A1L27Q & !A1L17Q & A1L76Q & !A1L09Q & !link;
+A1L31_p2_out = !A1L37Q & !A1L27Q & !A1L17Q & A1L76Q & !link & !A1L96Q;
+A1L31_p3_out = A1L76Q & !A1L09Q & !link & A1L86Q;
+A1L31_p4_out = !A1L17Q & A1L76Q & !link & !A1L96Q & A1L86Q;
+A1L31 = A1L21 # A1L31_p0_out # A1L31_p1_out # A1L31_p2_out # A1L31_p3_out # A1L31_p4_out;
+
+
+--A1L18 is inner_state~4153 at LC17
+A1L18_p0_out = A1L09Q & !A1L96Q & !A1L17Q & !A1L76Q & A1L86Q;
+A1L18_p1_out = !A1L19Q & !A1L09Q;
+A1L18_p2_out = !A1L09Q & A1L96Q & !A1L17Q & !A1L07Q;
+A1L18_p3_out = !A1L09Q & A1L96Q & !A1L17Q & !A1L76Q & !A1L86Q;
+A1L18_p4_out = !A1L09Q & !A1L17Q & A1L76Q & A1L86Q;
+A1L18 = A1L18_p0_out # A1L18_p1_out # A1L18_p2_out # A1L18_p3_out # A1L18_p4_out;
+
+
+--A1L28 is inner_state~4159 at LC18
+A1L28_p0_out = !A1L96Q & !A1L17Q & !A1L07Q & A1L47;
+A1L28_p1_out = A1L76Q & !A1L27Q & !A1L37Q & !A1L96Q & phase3 & A1L09Q & A1L17Q & A1L07Q;
+A1L28_p2_out = !A1L76Q & !A1L27Q & !A1L37Q & !A1L96Q & phase3 & !A1L09Q & A1L17Q & A1L07Q & A1L86Q & !phase1;
+A1L28_p3_out = !A1L76Q & A1L27Q & A1L37Q & !A1L96Q & phase3 & !A1L09Q & !A1L07Q;
+A1L28_p4_out = !A1L76Q & A1L27Q & A1L37Q & !A1L96Q & phase3 & !A1L09Q & A1L86Q & !phase1;
+A1L28 = A1L18 # A1L28_p0_out # A1L28_p1_out # A1L28_p2_out # A1L28_p3_out # A1L28_p4_out;
+
+
+--A1L38 is inner_state~4165 at LC54
+A1L38_p1_out = !A1L19Q & !A1L09Q;
+A1L38 = A1L38_p1_out;
+
+
+--A1L48 is inner_state~4167 at LC55
+A1L48_p0_out = !A1L37Q & !A1L17Q & A1L07Q;
+A1L48_p1_out = !A1L09Q & !A1L86Q & !A1L37Q & A1L96Q & !A1L76Q;
+A1L48_p2_out = !A1L09Q & A1L86Q & !A1L37Q & A1L76Q;
+A1L48_p3_out = A1L09Q & A1L86Q & !A1L37Q & !A1L96Q & !A1L76Q;
+A1L48_p4_out = !A1L37Q & !phase3;
+A1L48 = A1L38 # A1L48_p0_out # A1L48_p1_out # A1L48_p2_out # A1L48_p3_out # A1L48_p4_out;
+
+
+--A1L58 is inner_state~4173 at LC49
+A1L58_p1_out = A1L86Q & !A1L27Q & A1L76Q & !A1L09Q;
+A1L58 = A1L58_p1_out;
+
+
+--A1L68 is inner_state~4175 at LC50
+A1L68_p0_out = !A1L86Q & !A1L27Q & !A1L37Q & A1L07Q;
+A1L68_p1_out = A1L86Q & !A1L27Q & !A1L76Q & A1L09Q & !A1L96Q;
+A1L68_p2_out = !A1L86Q & !A1L27Q & !A1L76Q & !A1L09Q & A1L96Q;
+A1L68_p3_out = !A1L27Q & !phase3;
+A1L68_p4_out = !A1L27Q & !A1L37Q & !A1L17Q;
+A1L68 = A1L58 # A1L68_p0_out # A1L68_p1_out # A1L68_p2_out # A1L68_p3_out # A1L68_p4_out;
+
+
+--A1L78 is inner_state~4181 at LC52
+A1L78_p1_out = A1L76Q & A1L37Q & phase3 & !A1L17Q & A1L27Q & A1L09Q & !A1L07Q;
+A1L78_p2_out = A1L37Q & phase3 & !A1L17Q & A1L27Q & A1L09Q & !A1L07Q & !A1L86Q;
+A1L78_p3_out = A1L37Q & phase3 & !A1L17Q & A1L27Q & A1L09Q & !A1L07Q & A1L96Q;
+A1L78_p4_out = !A1L76Q & A1L37Q & phase3 & !A1L17Q & A1L27Q & !A1L09Q & !A1L07Q & A1L86Q & A1L19Q;
+A1L78 = A1L78_p1_out # A1L78_p2_out # A1L78_p3_out # A1L78_p4_out;
+
+
+--A1L41 is Select~6500 at LC43
+A1L41_p1_out = !A1L17Q & A1L76Q & A1L86Q & sda_buf & !A1L07Q & !A1L27Q & !A1L37Q;
+A1L41_p2_out = A1L76Q & A1L86Q & sda_buf & !phase0 & A1L37Q;
+A1L41 = A1L41_p1_out # A1L41_p2_out;
+
+
+--A1L51 is Select~6503 at LC44
+A1L51_p0_out = A1L76Q & A1L86Q & A1L07Q & sda_buf & A1L27Q;
+A1L51_p1_out = A1L76Q & A1L86Q & !A1L07Q & sda_buf & !phase0;
+A1L51_p2_out = !A1L17Q & A1L76Q & A1L86Q & sda_buf & !phase0;
+A1L51_p3_out = A1L76Q & A1L86Q & A1L07Q & phase1 & A1L27Q;
+A1L51_p4_out = !phase3 & A1L17Q & A1L76Q & A1L86Q & A1L07Q & sda_buf;
+A1L51 = A1L41 # A1L51_p0_out # A1L51_p1_out # A1L51_p2_out # A1L51_p3_out # A1L51_p4_out;
+
+
+--A1L61 is Select~6509 at LC29
+A1L61_p1_out = A1L96Q & phase3 & !A1L37Q & A1L17Q & A1L27Q;
+A1L61 = A1L61_p1_out;
+
+
+--A1L71 is Select~6511 at LC30
+A1L71_p0_out = A1L96Q & phase3 & !A1L27Q & !A1L07Q & !A1L17Q & !A1L37Q & link;
+A1L71_p1_out = A1L96Q & sda_buf & !phase3 & A1L27Q;
+A1L71_p2_out = A1L96Q & sda_buf & !A1L27Q & !A1L17Q & !A1L37Q & !phase1;
+A1L71_p3_out = A1L96Q & sda_buf & A1L07Q & !A1L17Q;
+A1L71_p4_out = A1L96Q & sda_buf & A1L27Q & A1L07Q;
+A1L71 = A1L61 # A1L71_p0_out # A1L71_p1_out # A1L71_p2_out # A1L71_p3_out # A1L71_p4_out;
+
+
+--A1L81 is Select~6517 at LC27
+A1L81_p0_out = A1L76Q & !A1L86Q & !phase3 & sda_buf & !A1L07Q;
+A1L81_p1_out = A1L76Q & !A1L86Q & phase3 & !A1L07Q & !A1L37Q & !A1L17Q & A1L27Q;
+A1L81_p2_out = A1L76Q & !A1L86Q & sda_buf & !A1L37Q & !A1L17Q;
+A1L81_p3_out = A1L76Q & !A1L86Q & phase3 & A1L37Q & A1L17Q & A1L27Q;
+A1L81_p4_out = A1L76Q & !A1L86Q & !phase3 & sda_buf & A1L27Q;
+A1L81 = A1L81_p0_out # A1L81_p1_out # A1L81_p2_out # A1L81_p3_out # A1L81_p4_out;
+
+
+--A1L91 is Select~6523 at LC41
+A1L91_p0_out = A1L27Q & !A1L76Q & !A1L86Q & !A1L96Q & sda_buf & A1L07Q;
+A1L91_p1_out = A1L27Q & !A1L76Q & !A1L86Q & !A1L96Q & !phase3 & sda_buf;
+A1L91_p2_out = !A1L76Q & !A1L86Q & !A1L96Q & !phase3 & sda_buf & !A1L07Q & A1L17Q;
+A1L91_p3_out = !A1L76Q & !A1L86Q & !A1L96Q & !phase3 & sda_buf & A1L17Q & !phase0;
+A1L91_p4_out = !A1L27Q & !A1L76Q & !A1L86Q & !A1L96Q & phase3 & !A1L07Q & !A1L17Q & link & !A1L37Q;
+A1L91 = A1L91_p0_out # A1L91_p1_out # A1L91_p2_out # A1L91_p3_out # A1L91_p4_out;
+
+
+--A1L02 is Select~6529 at LC24
+A1L02_p1_out = !A1L76Q & A1L86Q & !A1L07Q & sda_buf & !phase3;
+A1L02_p2_out = !A1L76Q & A1L86Q & sda_buf & !phase3 & !phase0;
+A1L02_p3_out = !A1L76Q & A1L86Q & A1L07Q & A1L27Q & phase1;
+A1L02_p4_out = !A1L76Q & A1L86Q & sda_buf & !A1L27Q & !A1L37Q & !A1L17Q;
+A1L02 = A1L02_p1_out # A1L02_p2_out # A1L02_p3_out # A1L02_p4_out;
+
+
+--A1L12 is Select~6534 at LC25
+A1L12_p0_out = A1L27Q & !A1L76Q & A1L86Q & !A1L07Q & !A1L17Q & !A1L37Q & phase3 & writeData_reg[1];
+A1L12_p1_out = A1L27Q & !A1L76Q & A1L86Q & A1L07Q & sda_buf;
+A1L12_p2_out = !A1L76Q & A1L86Q & A1L07Q & sda_buf & !A1L17Q;
+A1L12_p3_out = !A1L76Q & A1L86Q & sda_buf & A1L37Q & !phase3;
+A1L12_p4_out = A1L27Q & !A1L76Q & A1L86Q & !A1L17Q & A1L37Q & phase3 & !writeData_reg[0];
+A1L12 = A1L02 # A1L12_p0_out # A1L12_p1_out # A1L12_p2_out # A1L12_p3_out # A1L12_p4_out;
+
+
+--A1L22 is Select~6540 at LC22
+A1L22_p1_out = !A1L07Q & A1L76Q & !A1L86Q & !phase3 & sda_buf;
+A1L22_p2_out = A1L76Q & !A1L86Q & !phase3 & sda_buf & A1L37Q;
+A1L22_p3_out = A1L07Q & A1L76Q & !A1L86Q & sda_buf & A1L27Q;
+A1L22_p4_out = A1L07Q & A1L76Q & !A1L86Q & sda_buf & !A1L17Q;
+A1L22 = A1L22_p1_out # A1L22_p2_out # A1L22_p3_out # A1L22_p4_out;
+
+
+--A1L151 is sda~15 at LC66
+A1L151_p1_out = A1L27Q & A1L051 & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[0];
+A1L151_p2_out = A1L051 & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[0] & A1L17Q;
+A1L151_p3_out = !A1L27Q & A1L051 & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & !readData_reg[0] & !A1L17Q;
+A1L151 = A1L151_p1_out # A1L151_p2_out # A1L151_p3_out;
+
+
+--A1L501 is readData_reg[0]~191 at LC70
+A1L501_p1_out = A1L27Q & readData_reg[0] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[1];
+A1L501_p2_out = readData_reg[0] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[1] & A1L17Q;
+A1L501_p3_out = !A1L27Q & readData_reg[0] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & !readData_reg[1] & !A1L17Q;
+A1L501 = A1L501_p1_out # A1L501_p2_out # A1L501_p3_out;
+
+
+--A1L79 is main_state~617 at LC1
+A1L79_p1_out = !A1L09Q & sda_buf & phase1 & A1L07Q & A1L17Q & A1L19Q;
+A1L79_p2_out = !A1L09Q & A1L07Q & A1L19Q & A1L27Q & phase3 & A1L86Q;
+A1L79_p3_out = !A1L09Q & A1L19Q & A1L86Q & A1L76Q;
+A1L79 = A1L79_p1_out # A1L79_p2_out # A1L79_p3_out;
+
+
+--A1L701 is readData_reg[1]~195 at LC72
+A1L701_p1_out = A1L27Q & readData_reg[1] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[2];
+A1L701_p2_out = readData_reg[1] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[2] & A1L17Q;
+A1L701_p3_out = !A1L27Q & readData_reg[1] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & !readData_reg[2] & !A1L17Q;
+A1L701 = A1L701_p1_out # A1L701_p2_out # A1L701_p3_out;
+
+
+--A1L901 is readData_reg[2]~199 at LC102
+A1L901_p1_out = A1L27Q & readData_reg[2] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[3];
+A1L901_p2_out = readData_reg[2] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[3] & A1L17Q;
+A1L901_p3_out = !A1L27Q & readData_reg[2] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & !readData_reg[3] & !A1L17Q;
+A1L901 = A1L901_p1_out # A1L901_p2_out # A1L901_p3_out;
+
+
+--A1L111 is readData_reg[3]~203 at LC100
+A1L111_p1_out = A1L27Q & readData_reg[3] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[4];
+A1L111_p2_out = readData_reg[3] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[4] & A1L17Q;
+A1L111_p3_out = !A1L27Q & readData_reg[3] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & !readData_reg[4] & !A1L17Q;
+A1L111 = A1L111_p1_out # A1L111_p2_out # A1L111_p3_out;
+
+
+--A1L311 is readData_reg[4]~207 at LC104
+A1L311_p1_out = A1L27Q & readData_reg[4] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[5];
+A1L311_p2_out = readData_reg[4] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[5] & A1L17Q;
+A1L311_p3_out = !A1L27Q & readData_reg[4] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & !readData_reg[5] & !A1L17Q;
+A1L311 = A1L311_p1_out # A1L311_p2_out # A1L311_p3_out;
+
+
+--A1L511 is readData_reg[5]~211 at LC111
+A1L511_p1_out = A1L27Q & readData_reg[5] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[6];
+A1L511_p2_out = readData_reg[5] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[6] & A1L17Q;
+A1L511_p3_out = !A1L27Q & readData_reg[5] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & !readData_reg[6] & !A1L17Q;
+A1L511 = A1L511_p1_out # A1L511_p2_out # A1L511_p3_out;
+
+
+--A1L711 is readData_reg[6]~215 at LC109
+A1L711_p1_out = A1L27Q & readData_reg[6] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[7];
+A1L711_p2_out = readData_reg[6] & phase1 & A1L09Q & A1L76Q & A1L86Q & !A1L07Q & !readData_reg[7] & A1L17Q;
+A1L711_p3_out = !A1L27Q & readData_reg[6] & phase1 & A1L09Q & A1L76Q & A1L86Q & A1L07Q & !readData_reg[7] & !A1L17Q;
+A1L711 = A1L711_p1_out # A1L711_p2_out # A1L711_p3_out;
+
+
+--A1L731 is reduce_or~2516 at LC107
+A1L731_p0_out = A1L46Q & readData_reg[5];
+A1L731_p1_out = !readData_reg[2] & !readData_reg[1] & !readData_reg[3] & !A1L66Q;
+A1L731_p2_out = !writeData_reg[1] & !writeData_reg[3] & writeData_reg[2] & !A1L46Q;
+A1L731_p3_out = !writeData_reg[1] & writeData_reg[3] & !writeData_reg[2] & !A1L46Q & writeData_reg[0];
+A1L731_p4_out = A1L46Q & readData_reg[6];
+A1L731 = A1L241 # A1L731_p0_out # A1L731_p1_out # A1L731_p2_out # A1L731_p3_out # A1L731_p4_out;
+
+
+--A1L831 is reduce_or~2520 at LC84
+A1L831_p0_out = A1L46Q & !A1L66Q & !readData_reg[1] & !readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7] & !readData_reg[2];
+A1L831_p1_out = writeData_reg[1] & !writeData_reg[0] & writeData_reg[3] & !A1L46Q & A1L66Q;
+A1L831_p2_out = !writeData_reg[1] & !writeData_reg[0] & !writeData_reg[3] & !A1L46Q & A1L66Q & !writeData_reg[2];
+A1L831_p3_out = writeData_reg[1] & writeData_reg[0] & !A1L46Q & A1L66Q & !writeData_reg[2];
+A1L831_p4_out = writeData_reg[0] & writeData_reg[3] & !A1L46Q & A1L66Q & !writeData_reg[2];
+A1L831 = A1L831_p0_out # A1L831_p1_out # A1L831_p2_out # A1L831_p3_out # A1L831_p4_out;
+
+
+--A1L931 is reduce_or~2526 at LC92
+A1L931_p1_out = !readData_reg[3] & readData_reg[2] & !readData_reg[0] & !readData_reg[1] & A1L46Q & !A1L66Q;
+A1L931_p2_out = !A1L46Q & A1L66Q & !writeData_reg[2] & !writeData_reg[3] & !writeData_reg[1] & writeData_reg[0];
+A1L931_p3_out = readData_reg[2] & readData_reg[0] & readData_reg[1] & A1L46Q & !A1L66Q;
+A1L931_p4_out = !A1L46Q & A1L66Q & !writeData_reg[2] & writeData_reg[1] & !writeData_reg[0];
+A1L931 = A1L931_p1_out # A1L931_p2_out # A1L931_p3_out # A1L931_p4_out;
+
+
+--A1L041 is reduce_or~2531 at LC87
+A1L041_p1_out = !readData_reg[0] & !readData_reg[3] & !readData_reg[1] & readData_reg[2] & A1L46Q & !A1L66Q;
+A1L041_p2_out = !A1L46Q & A1L66Q & writeData_reg[0] & !writeData_reg[3] & !writeData_reg[1] & !writeData_reg[2];
+A1L041_p3_out = readData_reg[0] & !readData_reg[3] & !readData_reg[1] & !readData_reg[2] & A1L46Q & !A1L66Q;
+A1L041_p4_out = !A1L46Q & A1L66Q & !writeData_reg[0] & !writeData_reg[3] & !writeData_reg[1] & writeData_reg[2];
+A1L041 = A1L041_p1_out # A1L041_p2_out # A1L041_p3_out # A1L041_p4_out;
+
+
+--A1L141 is reduce_or~2536 at LC90
+A1L141_p0_out = A1L46Q & !A1L66Q & readData_reg[4];
+A1L141_p1_out = readData_reg[0] & !readData_reg[1] & !readData_reg[2] & A1L46Q & !A1L66Q;
+A1L141_p2_out = !A1L46Q & A1L66Q & writeData_reg[2] & !writeData_reg[1] & !writeData_reg[0];
+A1L141_p3_out = !readData_reg[1] & readData_reg[2] & A1L46Q & !A1L66Q & !readData_reg[3];
+A1L141_p4_out = !A1L46Q & A1L66Q & !writeData_reg[2] & !writeData_reg[1] & !writeData_reg[3];
+A1L141 = A1L141_p0_out # A1L141_p1_out # A1L141_p2_out # A1L141_p3_out # A1L141_p4_out;
+
+
+--~GND~0 is ~GND~0 at LC37
+~GND~0_or_out = GND;
+~GND~0 = ~GND~0_or_out;
+
+
+--~VCC~0 is ~VCC~0 at LC94
+~VCC~0_or_out = GND;
+~VCC~0 = !(~VCC~0_or_out);
+
+
+--A1L2 is Select~6432sexp at SEXP37
+A1L2 = EXP(sda_buf & !A1L76Q & A1L86Q);
+
+
+--A1L9 is Select~6471sexp1 at SEXP38
+A1L9 = EXP(sda_buf & A1L76Q & A1L86Q);
+
+
+--A1L01 is Select~6471sexp2 at SEXP39
+A1L01 = EXP(sda_buf & A1L96Q);
+
+
+--A1L241 is reduce_or~2546 at LC106
+A1L241_p1_out = readData_reg[4] & A1L46Q;
+A1L241_p2_out = A1L46Q & A1L66Q;
+A1L241 = A1L241_p1_out # A1L241_p2_out;
+
+
+--clk is clk at PIN_83
+--operation mode is input
+
+clk = INPUT();
+
+
+--rst is rst at PIN_1
+--operation mode is input
+
+rst = INPUT();
+
+
+--data_in[0] is data_in[0] at PIN_24
+--operation mode is input
+
+data_in[0] = INPUT();
+
+
+--data_in[1] is data_in[1] at PIN_22
+--operation mode is input
+
+data_in[1] = INPUT();
+
+
+--data_in[2] is data_in[2] at PIN_21
+--operation mode is input
+
+data_in[2] = INPUT();
+
+
+--data_in[3] is data_in[3] at PIN_20
+--operation mode is input
+
+data_in[3] = INPUT();
+
+
+--wr_input is wr_input at PIN_35
+--operation mode is input
+
+wr_input = INPUT();
+
+
+--rd_input is rd_input at PIN_36
+--operation mode is input
+
+rd_input = INPUT();
+
+
+--A1L051 is sda~1 at PIN_29
+--operation mode is bidir
+
+A1L051 = sda;
+
+--sda is sda at PIN_29
+--operation mode is bidir
+
+sda_tri_out = TRI(sda_buf, link);
+sda = BIDIR(sda_tri_out);
+
+
+--lowbit is lowbit at PIN_30
+--operation mode is output
+
+lowbit = OUTPUT(~GND~0);
+
+
+--seg_data[0] is seg_data[0] at PIN_61
+--operation mode is output
+
+seg_data[0] = OUTPUT(~VCC~0);
+
+
+--en[0] is en[0] at PIN_75
+--operation mode is output
+
+en[0] = OUTPUT(A1L46Q);
+
+
+--en[1] is en[1] at PIN_74
+--operation mode is output
+
+en[1] = OUTPUT(A1L66Q);
+
+
+--scl is scl at PIN_28
+--operation mode is output
+
+scl = OUTPUT(A1L741Q);
+
+
+--seg_data[1] is seg_data[1] at PIN_64
+--operation mode is output
+
+seg_data[1] = OUTPUT(A1L341);
+
+
+--seg_data[2] is seg_data[2] at PIN_56
+--operation mode is output
+
+seg_data[2] = OUTPUT(A1L821);
+
+
+--seg_data[5] is seg_data[5] at PIN_63
+--operation mode is output
+
+seg_data[5] = OUTPUT(A1L231);
+
+
+--seg_data[6] is seg_data[6] at PIN_55
+--operation mode is output
+
+seg_data[6] = OUTPUT(A1L331);
+
+
+--seg_data[3] is seg_data[3] at PIN_58
+--operation mode is output
+
+seg_data[3] = OUTPUT(A1L631);
+
+
+--seg_data[4] is seg_data[4] at PIN_60
+--operation mode is output
+
+seg_data[4] = OUTPUT(A1L431);
+
+
+--seg_data[7] is seg_data[7] at PIN_57
+--operation mode is output
+
+seg_data[7] = OUTPUT(A1L531);
+
+
+
+
+
+
+--A1L341 is reduce_or~2547 at LC99
+A1L341_or_out = A1L911;
+A1L341 = A1L341_or_out;
+
+
+--A1L441 is reduce_or~2548 at SEXP87
+A1L441 = EXP(!readData_reg[4] & !readData_reg[5] & !readData_reg[6] & !readData_reg[7]);
+
+

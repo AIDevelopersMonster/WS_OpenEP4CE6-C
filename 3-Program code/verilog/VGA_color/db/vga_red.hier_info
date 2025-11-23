@@ -1,0 +1,64 @@
+|vga_red
+clk => clk.IN1
+reset => h_cnt[0].ACLR
+reset => h_cnt[1].ACLR
+reset => h_cnt[2].ACLR
+reset => h_cnt[3].ACLR
+reset => h_cnt[4].ACLR
+reset => h_cnt[5].ACLR
+reset => h_cnt[6].ACLR
+reset => h_cnt[7].ACLR
+reset => h_cnt[8].ACLR
+reset => h_cnt[9].ACLR
+reset => hys_r.ACLR
+reset => vys_r.ACLR
+reset => v_cnt[0].ACLR
+reset => v_cnt[1].ACLR
+reset => v_cnt[2].ACLR
+reset => v_cnt[3].ACLR
+reset => v_cnt[4].ACLR
+reset => v_cnt[5].ACLR
+reset => v_cnt[6].ACLR
+reset => v_cnt[7].ACLR
+reset => v_cnt[8].ACLR
+reset => v_cnt[9].ACLR
+
+
+|vga_red|vga_pll:vga_pll_inst
+inclk0 => sub_wire3[0].IN1
+
+
+|vga_red|vga_pll:vga_pll_inst|altpll:altpll_component
+inclk[0] => pll.CLK
+inclk[1] => ~NO_FANOUT~
+fbin => ~NO_FANOUT~
+pllena => ~NO_FANOUT~
+clkswitch => ~NO_FANOUT~
+areset => ~NO_FANOUT~
+pfdena => ~NO_FANOUT~
+clkena[0] => ~NO_FANOUT~
+clkena[1] => ~NO_FANOUT~
+clkena[2] => ~NO_FANOUT~
+clkena[3] => ~NO_FANOUT~
+clkena[4] => ~NO_FANOUT~
+clkena[5] => ~NO_FANOUT~
+extclkena[0] => ~NO_FANOUT~
+extclkena[1] => ~NO_FANOUT~
+extclkena[2] => ~NO_FANOUT~
+extclkena[3] => ~NO_FANOUT~
+scanclk => ~NO_FANOUT~
+scanclkena => ~NO_FANOUT~
+scanaclr => ~NO_FANOUT~
+scanread => ~NO_FANOUT~
+scanwrite => ~NO_FANOUT~
+scandata => ~NO_FANOUT~
+phasecounterselect[0] => ~NO_FANOUT~
+phasecounterselect[1] => ~NO_FANOUT~
+phasecounterselect[2] => ~NO_FANOUT~
+phasecounterselect[3] => ~NO_FANOUT~
+phaseupdown => ~NO_FANOUT~
+phasestep => ~NO_FANOUT~
+configupdate => ~NO_FANOUT~
+fbmimicbidir <> <GND>
+
+

@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Mon May 14 10:46:38 2018
+Quartus II Version : 11.0 Build 157 04/27/2011 SJ Full Version
+Revision Name : display
+Top-level Entity Name : display
+Family : Cyclone IV E
+Total logic elements : 151
+    Total combinational functions : 149
+    Dedicated logic registers : 85
+Total registers : 85
+Total pins : 13
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

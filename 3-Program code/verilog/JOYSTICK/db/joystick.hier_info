@@ -1,0 +1,31 @@
+|joystick
+clk => led_reg[0].CLK
+clk => led_reg[1].CLK
+clk => led_reg[2].CLK
+clk => led_reg[3].CLK
+reset => led_reg[0].PRESET
+reset => led_reg[1].PRESET
+reset => led_reg[2].PRESET
+reset => led_reg[3].PRESET
+key_up => led_reg.OUTPUTSELECT
+key_up => led_reg.OUTPUTSELECT
+key_up => led_reg.OUTPUTSELECT
+key_up => led_reg.OUTPUTSELECT
+key_down => led_reg.OUTPUTSELECT
+key_down => led_reg.OUTPUTSELECT
+key_down => led_reg.OUTPUTSELECT
+key_down => led_reg.OUTPUTSELECT
+key_left => led_reg.OUTPUTSELECT
+key_left => led_reg.OUTPUTSELECT
+key_left => led_reg.OUTPUTSELECT
+key_left => led_reg.OUTPUTSELECT
+key_right => led_reg.OUTPUTSELECT
+key_right => led_reg.OUTPUTSELECT
+key_right => led_reg.OUTPUTSELECT
+key_right => led_reg.OUTPUTSELECT
+key_z => led_reg.OUTPUTSELECT
+key_z => led_reg.OUTPUTSELECT
+key_z => led_reg.OUTPUTSELECT
+key_z => led_reg.OUTPUTSELECT
+
+

@@ -1,0 +1,37 @@
+m255
+K3
+13
+cModel Technology
+Z0 dE:\fpga_project\simulation\modelsim
+vkeyscan
+I9JNXEXcSTT58QoHlPKPMD0
+VXP:UH:=khgoGY;;m<ML6U3
+Z1 dE:\fpga_project\simulation\modelsim
+w1309879854
+8E:/fpga_project/keyscan.v
+FE:/fpga_project/keyscan.v
+L0 1
+Z2 OV;L;6.6c;45
+r1
+31
+Z3 o-vlog01compat -work work -O0
+!s100 ?8O1e1c=m8SQ=?=TzoNgk1
+!s85 0
+!s101 -O0
+!s92 -vlog01compat -work work +incdir+E:/fpga_project -O0
+vkeyscan_vlg_tst
+!s100 imW1b3=VKc9__1RaVfm0e3
+IagQ;9e@44YZ7kDHe<G>S62
+V7gA63^B`1FVHhi1Q4T6EW3
+R1
+w1309880076
+8E:/fpga_project/simulation/modelsim/keyscan.vt
+FE:/fpga_project/simulation/modelsim/keyscan.vt
+L0 28
+R2
+r1
+!s85 0
+31
+!s101 -O0
+R3
+!s92 -vlog01compat -work work +incdir+E:/fpga_project/simulation/modelsim -O0

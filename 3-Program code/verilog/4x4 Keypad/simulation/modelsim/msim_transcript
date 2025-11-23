@@ -1,0 +1,37 @@
+# Reading E:/modulesim/modelsim_ase/tcl/vsim/pref.tcl 
+# do keyscan_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying E:\modulesim\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied E:\modulesim\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+E:/fpga_project {E:/fpga_project/keyscan.v}
+# Model Technology ModelSim ALTERA vlog 6.6c Compiler 2010.08 Aug 24 2010
+# -- Compiling module keyscan
+# 
+# Top level modules:
+# 	keyscan
+# 
+# vlog -vlog01compat -work work +incdir+E:/fpga_project/simulation/modelsim {E:/fpga_project/simulation/modelsim/keyscan.vt}
+# Model Technology ModelSim ALTERA vlog 6.6c Compiler 2010.08 Aug 24 2010
+# -- Compiling module keyscan_vlg_tst
+# 
+# Top level modules:
+# 	keyscan_vlg_tst
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs="+acc" keyscan_vlg_tst
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneiii_ver -L rtl_work -L work -voptargs=\"+acc\" -t 1ps keyscan_vlg_tst 
+# Loading work.keyscan_vlg_tst
+# Loading work.keyscan
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all

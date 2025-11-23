@@ -1,0 +1,28 @@
+
+State Machine - |i2c|inner_state
+Name inner_state.stop inner_state.ack inner_state.eighth inner_state.seventh inner_state.sixth inner_state.fifth inner_state.fourth inner_state.third inner_state.second inner_state.first inner_state.start 
+inner_state.start 0 0 0 0 0 0 0 0 0 0 0 
+inner_state.first 0 0 0 0 0 0 0 0 0 1 1 
+inner_state.second 0 0 0 0 0 0 0 0 1 0 1 
+inner_state.third 0 0 0 0 0 0 0 1 0 0 1 
+inner_state.fourth 0 0 0 0 0 0 1 0 0 0 1 
+inner_state.fifth 0 0 0 0 0 1 0 0 0 0 1 
+inner_state.sixth 0 0 0 0 1 0 0 0 0 0 1 
+inner_state.seventh 0 0 0 1 0 0 0 0 0 0 1 
+inner_state.eighth 0 0 1 0 0 0 0 0 0 0 1 
+inner_state.ack 0 1 0 0 0 0 0 0 0 0 1 
+inner_state.stop 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |i2c|i2c_state
+Name i2c_state.read_data i2c_state.write_data i2c_state.sendaddr i2c_state.ini i2c_state.read_ini 
+i2c_state.ini 0 0 0 0 0 
+i2c_state.sendaddr 0 0 1 1 0 
+i2c_state.write_data 0 1 0 1 0 
+i2c_state.read_data 1 0 0 1 0 
+i2c_state.read_ini 0 0 0 1 1 
+
+State Machine - |i2c|main_state
+Name main_state.00 main_state.10 main_state.01 
+main_state.00 0 0 0 
+main_state.01 1 0 1 
+main_state.10 1 1 0 
